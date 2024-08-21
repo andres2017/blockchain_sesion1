@@ -1,22 +1,22 @@
-const crypto = require('crypto');
-const { SHA256 } = require('crypto-js');
-class Block{
-    constructor(
-    index,
-    timestamp,
-    data,
-    previousHash = ''
-){
-    this.index = index;
-    this.timestamp = timestamp;
-    this.data = data;
-    this.previousHash = previousHash;
-    this.hash = this.calculateHash();
+const crypto =  require('crypto');
 
-}
-    
+class Block {
+    constructor(
+        index,
+        timestamp,
+        data,
+        previousHash = ''
+    ){
+        this.index = index;
+        this.timestamp = timestamp;
+        this.data = data;
+        this.previousHash = previousHash;
+        this.hash = this.calculateHash();
+    }
+
     calculateHash(){
-        return crypto.createHash('sha256').update(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).digest('hex');
+        const cry = crypto.createHash('sha256').update(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data));
+        return cry.digest('hex');
     }
 }
 
