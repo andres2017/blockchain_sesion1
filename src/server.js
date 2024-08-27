@@ -1,4 +1,5 @@
 const express = require ('express');
+const cors = require('cors');
 const bodyParser = require ('body-parser');
 const Blockchain = require('./blockchain');
 const Block = require('./block');
@@ -9,6 +10,7 @@ const port = 3000;
 const myBlockchain = new Blockchain();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // Api para obtener la cadena completa
 
